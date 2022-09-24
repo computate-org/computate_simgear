@@ -1,0 +1,19 @@
+---
+APP_PYTHON: "{{ '/usr/bin/python' if lookup('file', '/usr/bin/python', errors='ignore') else '/usr/bin/python3' }}"
+APP_DEPENDENCIES_REDHAT:
+  - cmake
+  - gcc-c++
+  - libevent-devel
+APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
+APP_NAME: simgear
+APP_USER: "{{ lookup('env', 'USER') }}"
+APP_PREFIX: "/home/{{ APP_USER }}/.local"
+APP_ROOT: "{{ false if APP_PREFIX is regex('^/home') else true }}"
+APP_SRC: "{{ APP_PREFIX }}/src/{{ APP_NAME }}"
+APP_ASSETS_SRC: "{{ APP_PREFIX }}/src/stk-assets"
+APP_SHARE: "{{ APP_PREFIX }}/share/{{ APP_NAME  }}"
+APP_REPO_SSH: git@github.com:FlightGear/simgear.git
+APP_REPO_HTTPS: "{{ APP_REPO_SSH | replace('git@github.com:', 'https://github.com/') }}"
+APP_TAG: version/2020.3.11
+APP_README: "{{ APP_SRC }}/README.md"
+
