@@ -6,6 +6,9 @@ APP_DEPENDENCIES_REDHAT:
   - libevent-devel
   - OpenSceneGraph-devel
   - OpenSceneGraph
+  - boost-devel
+  - openal-soft-devel
+  - libcurl-devel
 APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
 APP_NAME: simgear
 APP_USER: "{{ lookup('env', 'USER') }}"

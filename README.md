@@ -21,6 +21,7 @@ echo "source ~/python/bin/activate" | tee -a ~/.bashrc
 
 ```bash
 echo "export LD_LIBRARY_PATH=${HOME}/.local/lib64:${HOME}/.local/lib" | tee -a ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Install the latest Ansible
